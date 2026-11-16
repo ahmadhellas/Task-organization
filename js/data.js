@@ -1,0 +1,38 @@
+const defaultTasks = [
+  {
+    id: 1,
+    title: "تعلم JavaScript",
+    description: "مراجعة الدوال والمصفوفات والأحداث في JavaScript",
+    category: "development",
+    priority: "high",
+    date: "2026-11-12",
+    completed: false,
+  },
+  {
+    id: 2,
+    title: "إنجاز واجب الجامعة",
+    description: "حل واجب برمجة الحاسوب وتسليمه",
+    category: "study",
+    priority: "high",
+    date: "2026-11-13",
+    completed: false,
+  },
+  {
+    id: 3,
+    title: "تصميم صفحة Portfolio",
+    description: "تحسين تصميم الصفحة الشخصية وإضافة المشاريع",
+    category: "work",
+    priority: "medium",
+    date: "2026-11-15",
+    completed: true,
+  },
+  {
+    id: 4,
+    title: "قراءة كتاب",
+    description: "قراءة 20 صفحة قبل النوم",
+    category: "personal",
+    priority: "low",
+    date: "2026-11-16",
+    completed: false,
+  },
+];

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taskora | إدارة مهامك بذكاء</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <div class="brand-icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <h2>Taskora</h2>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="section-title">القائمة الرئيسية</p>
+
+          <a href="#" class="nav-link active" data-filter="all">
+            <i class="fa-solid fa-border-all"></i>
+            <span>كل المهام</span>
+            <span class="nav-count" id="all-count">0</span>
+          </a>
+
+          <a href="#" class="nav-link" data-filter="active">
+            <i class="fa-regular fa-clock"></i>
+            <span>قيد التنفيذ</span>
+          </a>
+
+          <a href="#" class="nav-link" data-filter="completed">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>المهام المكتملة</span>
+          </a>
+        </div>
+
+        <div class="sidebar-section">
+          <p class="section-title">مساحة العمل</p>
+
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-folder"></i>
+            <span>مشاريعي</span>
+          </a>
+
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>الإحصائيات</span>
+          </a>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="upgrade-card">
+            <div class="upgrade-icon">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <h3>أنجز المزيد!</h3>
+            <p>خطط ليومك وحقق أهدافك خطوة بخطوة.</p>
+            <button id="sidebar-add-btn">أضف مهمة جديدة</button>
+          </div>
+
+          <div class="profile">
+            <div class="profile-avatar">A</div>
+            <div class="profile-info">
+              <h4>Ahmed Hilles</h4>
+              <span>حساب شخصي</span>
+            </div>
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Topbar -->
+        <header class="topbar">
+          <div class="page-heading">
+            <button class="mobile-menu" id="menu-btn">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div>
+              <h1>لوحة التحكم</h1>
+              <p id="current-date">مرحباً بك في Taskora</p>
+            </div>
+          </div>
+
+          <div class="topbar-actions">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                id="search-input"
+                placeholder="ابحث عن مهمة..."
+              />
+            </div>
+
+            <button class="icon-button" id="theme-btn" title="تغيير المظهر">
+              <i class="fa-regular fa-moon"></i>
+            </button>
+
+            <button class="add-task-btn" id="add-task-btn">
+              <i class="fa-solid fa-plus"></i>
+              <span>مهمة جديدة</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Welcome -->
+        <section class="welcome-section">
+          <div>
+            <span class="welcome-label">ابدأ يومك بإنجاز جديد ✨</span>
+            <h2>أهلاً بك، أحمد!</h2>
+            <p>رتّب أولوياتك وخلّي كل يوم خطوة أقرب لأهدافك.</p>
+          </div>
+
+          <div class="welcome-decoration">
+            <i class="fa-solid fa-rocket"></i>
+          </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon purple">
+                <i class="fa-solid fa-list-check"></i>
+              </div>
+              <span>إجمالي المهام</span>
+            </div>
+            <h2 id="total-tasks">0</h2>
+            <p>جميع المهام المسجلة</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon orange">
+                <i class="fa-solid fa-spinner"></i>
+              </div>
+              <span>قيد التنفيذ</span>
+            </div>
+            <h2 id="active-tasks">0</h2>
+            <p>مهام تحتاج إلى إنجاز</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon green">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <span>المهام المكتملة</span>
+            </div>
+            <h2 id="completed-tasks">0</h2>
+            <p>إنجازاتك حتى الآن</p>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top">
+              <div class="stat-icon blue">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <span>نسبة الإنجاز</span>
+            </div>
+            <h2 id="completion-rate">0%</h2>
+            <p>من إجمالي المهام</p>
+          </div>
+        </section>
+
+        <!-- Progress -->
+        <section class="progress-section">
+          <div class="section-header">
+            <div>
+              <h2>تقدمك العام</h2>
+              <p>تابع مستوى إنجازك لجميع المهام</p>
+            </div>
+            <strong id="progress-label">0%</strong>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </section>
+
+        <!-- Tasks -->
+        <section class="tasks-section">
+          <div class="section-header tasks-heading">
+            <div>
+              <h2>مهامي</h2>
+              <p>نظّم أعمالك وابدأ بالإنجاز</p>
+            </div>
+
+            <span class="tasks-counter" id="tasks-counter"> 0 مهمة </span>
+          </div>
+
+          <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="active">قيد التنفيذ</button>
+            <button class="filter-btn" data-filter="completed">مكتملة</button>
+          </div>
+
+          <div class="tasks-list" id="tasks-list">
+            <!-- Tasks will be added by JavaScript -->
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <div class="empty-icon">
+              <i class="fa-solid fa-clipboard-check"></i>
+            </div>
+            <h3>لا توجد مهام هنا</h3>
+            <p>ابدأ بإضافة مهمة جديدة لتنظيم يومك.</p>
+            <button id="empty-add-btn">إضافة مهمة</button>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>صُنع بشغف باستخدام HTML, CSS & JavaScript</p>
+          <span>© 2026 Taskora</span>
+        </footer>
+      </main>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal-overlay" id="task-modal">
+      <div class="modal">
+        <div class="modal-header">
+          <div>
+            <h2 id="modal-title">إضافة مهمة جديدة</h2>
+            <p>أدخل تفاصيل المهمة الخاصة بك</p>
+          </div>
+
+          <button class="close-modal" id="close-modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <form id="task-form">
+          <input type="hidden" id="task-id" />
+
+          <div class="form-group">
+            <label for="task-title">عنوان المهمة</label>
+            <input
+              type="text"
+              id="task-title"
+              placeholder="مثلاً: تعلم JavaScript"
+              required
+              maxlength="80"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="task-description">وصف المهمة</label>
+            <textarea
+              id="task-description"
+              placeholder="اكتب تفاصيل المهمة..."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="task-category">التصنيف</label>
+              <select id="task-category">
+                <option value="study">دراسة</option>
+                <option value="work">عمل</option>
+                <option value="personal">شخصي</option>
+                <option value="development">برمجة</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="task-priority">الأولوية</label>
+              <select id="task-priority">
+                <option value="high">عالية</option>
+                <option value="medium" selected>متوسطة</option>
+                <option value="low">منخفضة</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="task-date">تاريخ الاستحقاق</label>
+            <input type="date" id="task-date" />
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="cancel-btn" id="cancel-modal">
+              إلغاء
+            </button>
+
+            <button type="submit" class="save-btn">
+              <i class="fa-solid fa-plus"></i>
+              حفظ المهمة
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+      <i class="fa-solid fa-circle-check"></i>
+      <span id="toast-message">تمت العملية بنجاح</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
+
